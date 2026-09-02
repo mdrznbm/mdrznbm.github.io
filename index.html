@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Shahrazin - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="name">
+    <button id="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <img src="assets/profile.jpg" alt="Mohammad Shahrazin" class="profile-pic">
+    <h1>Mohammad Shahrazin Bin Mohd Aminolah</h1>
+    <p>Singapore</p>
+  </header>
+
+  <section id="digital-presence">
+    <h2>Digital Presence</h2>
+    <a href="https://github.com/mdrznbm" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/mohammad-shahrazin" target="_blank">LinkedIn</a>
+  </section>
+
+  <section id="about-me">
+    <h2>About Me</h2>
+    <p>I'm an aspiring Cloud Support & DevOps Engineer undergoing intensive training in cloud infrastructure, containerization, and CI/CD pipelines. I'm comfortable across Linux, SQLite & MySQL, Python scripting, and building automation routines — and I'm looking for an entry-level role where I can put that hands-on foundation to work.</p>
+    <p><a href="https://mdrznbm.pythonanywhere.com/about-me" target="_blank">Read more about me →</a></p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p>Currently completing an intensive 3-month Cloud Support & DevOps bootcamp with Generation, covering Linux, Python, Microsoft Azure fundamentals, Docker, Terraform, and Ansible. Alongside the bootcamp, I run a self-hosted Proxmox home lab to practice these skills hands-on and support my household's home network.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Support & Operations: Troubleshooting, Ticketing & SLA Management, Documentation, Client Communication</li>
+      <li>Systems Foundations: Linux (CLI, permissions, basic security — via self-hosted home lab), Windows, Git</li>
+      <li>Bootcamp Exposure: Microsoft Azure Fundamentals, Python Scripting, Docker, Terraform, Ansible</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <h3>Mini Project B</h3>
+      <img src="assets/mini-project-b-screenshot.png" alt="Mini Project B screenshot">
+      <p>A Flask-based personal portfolio site with a community comment board, built to learn Flask fundamentals. Later became my testing ground for containerizing an app with Docker, deploying to a self-hosted Kubernetes cluster, and building a CI/CD pipeline with Azure DevOps.</p>
+      <p>Built with: Flask, Docker, Kubernetes, Azure DevOps</p>
+      <a href="https://github.com/mdrznbm/mini_project_b" target="_blank">Source Code</a>
+      <a href="https://mdrznbm.pythonanywhere.com" target="_blank">Live Demo</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Inventory Management App</h3>
+      <img src="assets/inventory-app-screenshot.png" alt="Inventory app screenshot">
+      <p>A role-based warehouse inventory system with separate supervisor, inbound, and outbound dashboards, full transaction accountability tracking, and account security features — currently being containerized and deployed to Azure as my bootcamp final project.</p>
+      <p>Built with: Flask, PostgreSQL, Docker, Azure</p>
+      <a href="https://github.com/mdrznbm/inventory-app" target="_blank">Source Code</a>
+    </div>
+
+  </section>
+
+  <script>
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', current);
+      applyTheme(current);
+    }
+  </script>
+</body>
+</html>

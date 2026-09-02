@@ -11,8 +11,16 @@
   <header id="name">
     <button id="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
     <img src="assets/profile.jpg" alt="Mohammad Shahrazin" class="profile-pic">
-    <h1>Mohammad Shahrazin Bin Mohd Aminolah</h1>
+    <h1>Mohammad Shahrazin</h1>
     <p>Singapore</p>
+    <p><a href="mailto:mdrznbm.w@gmail.com">mdrznbm.w@gmail.com</a></p>
+    <nav class="jump-links">
+      <a href="#digital-presence">Digital Presence</a>
+      <a href="#about-me">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </nav>
   </header>
 
   <section id="digital-presence">
@@ -47,17 +55,42 @@
     <div class="project-card">
       <h3>Mini Project B</h3>
       <img src="assets/mini-project-b-screenshot.png" alt="Mini Project B screenshot">
+      <img src="assets/mini-project-comments.png" alt="Mini Project B community comment board">
+      <img src="assets/mini-project-contact.png" alt="Mini Project B contact page">
       <p>A Flask-based personal portfolio site with a community comment board, built to learn Flask fundamentals. Later became my testing ground for containerizing an app with Docker, deploying to a self-hosted Kubernetes cluster, and building a CI/CD pipeline with Azure DevOps.</p>
       <p>Built with: Flask, Docker, Kubernetes, Azure DevOps</p>
+      <p>Contributors: Sole developer</p>
+      <pre><code>@app.route("/community-board", methods=["GET", "POST"])
+def community_board():
+    if request.method == "GET":
+        return render_template("community_board.html", comments=Comment.query.all())
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    comment = Comment(content=request.form["contents"], commenter=current_user)
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for('community_board'))</code></pre>
       <a href="https://github.com/mdrznbm/mini_project_b" target="_blank">Source Code</a>
       <a href="https://mdrznbm.pythonanywhere.com" target="_blank">Live Demo</a>
     </div>
 
     <div class="project-card">
       <h3>Inventory Management App</h3>
-      <img src="assets/inventory-app-screenshot.png" alt="Inventory app screenshot">
+      <img src="assets/inventory-app-screenshot.png" alt="Inventory app login screenshot">
+      <img src="assets/supervisor-console.png" alt="Inventory app supervisor console">
+      <img src="assets/inbound-console.png" alt="Inventory app inbound console">
+      <img src="assets/outbound-console.png" alt="Inventory app outbound console">
       <p>A role-based warehouse inventory system with separate supervisor, inbound, and outbound dashboards, full transaction accountability tracking, and account security features — currently being containerized and deployed to Azure as my bootcamp final project.</p>
       <p>Built with: Flask, PostgreSQL, Docker, Azure</p>
+      <p>Contributors: Repo owner</p>
+      <pre><code>class Transaction(db.Model):
+    __tablename__ = 'transactions'
+    id = db.Column(db.Integer, primary_key=True)
+    txn_type = db.Column(db.String(10), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(10), default='PENDING', nullable=False)
+    actioned_by_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
+    actioned_by = db.relationship('User', foreign_keys=[actioned_by_user_id])</code></pre>
       <a href="https://github.com/mdrznbm/inventory-app" target="_blank">Source Code</a>
     </div>
 

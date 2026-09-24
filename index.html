@@ -84,8 +84,10 @@ def community_board():
       <img src="assets/supervisor-console.png" alt="Inventory app supervisor console">
       <img src="assets/inbound-console.png" alt="Inventory app inbound console">
       <img src="assets/outbound-console.png" alt="Inventory app outbound console">
-      <p>A role-based warehouse inventory system with separate supervisor, inbound, and outbound dashboards, full transaction accountability tracking, and account security features — currently being containerized and deployed to Azure as my bootcamp final project.</p>
-      <p>Built with: Flask, PostgreSQL, Docker, Azure</p>
+      <img src="assets/architecture.png" alt="Warehouse Inventory Management">
+      <p>A role-based warehouse inventory management system developed as my bootcamp capstone project. The application includes separate supervisor, inbound, and outbound dashboards, transaction accountability tracking, and account security features.</p>
+      <p>The solution is containerized and deployed across both Microsoft Azure and a self-hosted Kubernetes environment. GitHub Actions is used for CI/CD, Azure Container Registry stores container images, and Azure PostgreSQL serves as the shared database platform.</p>
+      <p>To deepen my understanding of cloud-native technologies, I also deployed the application to a 3-node K3s cluster running within my Proxmox home lab, allowing me to gain hands-on experience with container orchestration, deployment automation, and hybrid hosting architectures.</p>
       <p>Contributors: Repo owner</p>
       <pre><code>class Transaction(db.Model):
     __tablename__ = 'transactions'

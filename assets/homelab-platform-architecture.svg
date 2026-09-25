@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+
+  <defs>
+    <style>
+      .title { font: bold 34px Arial; fill:#1e293b; }
+      .subtitle { font: bold 18px Arial; fill:#0f172a; }
+      .text { font: 15px Arial; fill:#334155; }
+
+      .terraform { fill:#ede9fe; stroke:#7c3aed; stroke-width:2; }
+      .proxmox { fill:#fff7ed; stroke:#ea580c; stroke-width:2; }
+      .cluster { fill:#eff6ff; stroke:#2563eb; stroke-width:2; }
+      .service { fill:#f0fdf4; stroke:#16a34a; stroke-width:2; }
+      .app { fill:#fdf2f8; stroke:#db2777; stroke-width:2; }
+
+      .box {
+        rx:12;
+        ry:12;
+      }
+
+      .arrow {
+        stroke:#475569;
+        stroke-width:3;
+        fill:none;
+        marker-end:url(#arrow);
+      }
+    </style>
+
+    <marker id="arrow"
+      markerWidth="10"
+      markerHeight="10"
+      refX="8"
+      refY="3"
+      orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="800" y="50" text-anchor="middle" class="title">
+    Home Lab & Platform Engineering Environment
+  </text>
+
+  <!-- Terraform -->
+  <rect x="600" y="100" width="400" height="110"
+        class="box terraform"/>
+  <text x="800" y="145" text-anchor="middle" class="subtitle">
+    VM100 • home-control
+  </text>
+  <text x="800" y="180" text-anchor="middle" class="text">
+    Terraform • Infrastructure as Code
+  </text>
+
+  <line x1="800" y1="210" x2="800" y2="280" class="arrow"/>
+
+  <!-- Proxmox -->
+  <rect x="450" y="290" width="700" height="90"
+        class="box proxmox"/>
+  <text x="800" y="335" text-anchor="middle" class="subtitle">
+    Proxmox VE Virtualization Platform
+  </text>
+
+  <line x1="800" y1="380" x2="800" y2="450" class="arrow"/>
+
+  <!-- Platform Cluster -->
+  <rect x="150" y="460" width="1300" height="420"
+        class="box cluster"/>
+
+  <text x="800" y="500" text-anchor="middle" class="subtitle">
+    Platform Services Kubernetes Environment
+  </text>
+
+  <text x="800" y="525" text-anchor="middle" class="text">
+    K3s Cluster • VM101, VM102, VM103
+  </text>
+
+  <!-- Nodes -->
+
+  <rect x="220" y="570" width="280" height="110"
+        class="box cluster"/>
+  <text x="360" y="615" text-anchor="middle" class="subtitle">
+    VM101
+  </text>
+  <text x="360" y="645" text-anchor="middle" class="text">
+    home-k3s-control
+  </text>
+
+  <rect x="660" y="570" width="280" height="110"
+        class="box cluster"/>
+  <text x="800" y="615" text-anchor="middle" class="subtitle">
+    VM102
+  </text>
+  <text x="800" y="645" text-anchor="middle" class="text">
+    home-k3s-w1
+  </text>
+
+  <rect x="1100" y="570" width="280" height="110"
+        class="box cluster"/>
+  <text x="1240" y="615" text-anchor="middle" class="subtitle">
+    VM103
+  </text>
+  <text x="1240" y="645" text-anchor="middle" class="text">
+    home-k3s-w2
+  </text>
+
+  <!-- Services -->
+
+  <rect x="250" y="740" width="180" height="70"
+        class="box service"/>
+  <text x="340" y="785" text-anchor="middle" class="subtitle">
+    ArgoCD
+  </text>
+
+  <rect x="480" y="740" width="180" height="70"
+        class="box service"/>
+  <text x="570" y="785" text-anchor="middle" class="subtitle">
+    Prometheus
+  </text>
+
+  <rect x="710" y="740" width="180" height="70"
+        class="box service"/>
+  <text x="800" y="785" text-anchor="middle" class="subtitle">
+    Grafana
+  </text>
+
+  <rect x="940" y="740" width="180" height="70"
+        class="box service"/>
+  <text x="1030" y="785" text-anchor="middle" class="subtitle">
+    Loki
+  </text>
+
+  <rect x="1170" y="740" width="180" height="70"
+        class="box service"/>
+  <text x="1260" y="785" text-anchor="middle" class="subtitle">
+    Nextcloud
+  </text>
+
+  <!-- Application Environment -->
+
+  <rect x="150" y="920" width="1300" height="60"
+        class="box app"/>
+
+  <text x="800" y="958" text-anchor="middle" class="subtitle">
+    Supports Application Hosting Environment (VM104) and Inventory Application Kubernetes Cluster (VM110-112)
+  </text>
+
+</svg>

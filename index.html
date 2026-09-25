@@ -59,54 +59,149 @@
   </ul>
 </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+<section id="projects">
+  <h2>Projects</h2>
 
-    <div class="project-card">
-      <h3>Mini Project B</h3>
-      <img src="assets/mini-project-b-screenshot.png" alt="Mini Project B screenshot">
-      <img src="assets/mini-project-comments.png" alt="Mini Project B community comment board">
-      <img src="assets/mini-project-contact.png" alt="Mini Project B contact page">
-      <p>A Flask-based personal portfolio site with a community comment board, built to learn Flask fundamentals. Later became my testing ground for containerizing an app with Docker, deploying to a self-hosted Kubernetes cluster, and building a CI/CD pipeline with Azure DevOps.</p>
-      <p>Built with: Flask, Docker, Kubernetes, Azure DevOps</p>
-      <p>Contributors: Sole developer</p>
-      <pre><code>@app.route("/community-board", methods=["GET", "POST"])
+  <div class="project-card">
+    <h3>Mini Project B</h3>
+
+    <img src="assets/mini-project-b-screenshot.png" alt="Mini Project B screenshot">
+    <img src="assets/mini-project-comments.png" alt="Mini Project B community comment board">
+    <img src="assets/mini-project-contact.png" alt="Mini Project B contact page">
+
+    <p>
+      A Flask-based personal portfolio site with a community comment board,
+      built to learn Flask fundamentals. Later became my testing ground for
+      containerizing an app with Docker, deploying to a self-hosted Kubernetes
+      cluster, and building a CI/CD pipeline with Azure DevOps.
+    </p>
+
+    <p>
+      Built with: Flask, Docker, Kubernetes, Azure DevOps
+    </p>
+
+    <p>
+      Contributors: Sole developer
+    </p>
+
+    <pre><code>@app.route("/community-board", methods=["GET", "POST"])
 def community_board():
     if request.method == "GET":
-        return render_template("community_board.html", comments=Comment.query.all())
+        return render_template(
+            "community_board.html",
+            comments=Comment.query.all()
+        )
+
     if not current_user.is_authenticated:
-        return redirect(url_for('login'))
-    comment = Comment(content=request.form["contents"], commenter=current_user)
+        return redirect(url_for("login"))
+
+    comment = Comment(
+        content=request.form["contents"],
+        commenter=current_user
+    )
+
     db.session.add(comment)
     db.session.commit()
-    return redirect(url_for('community_board'))</code></pre>
-      <a href="https://github.com/mdrznbm/mini_project_b" target="_blank">Source Code</a>
-      <a href="https://mdrznbm.pythonanywhere.com" target="_blank">Live Demo</a>
-    </div>
 
-    <div class="project-card">
-      <h3>Inventory Management App</h3>
-      <img src="assets/inventory-app-screenshot.png" alt="Inventory app login screenshot">
-      <img src="assets/supervisor-console.png" alt="Inventory app supervisor console">
-      <img src="assets/inbound-console.png" alt="Inventory app inbound console">
-      <img src="assets/outbound-console.png" alt="Inventory app outbound console">
-      <img src="assets/architecture.png" alt="Warehouse Inventory Management">
-      <p>A role-based warehouse inventory management system developed as my bootcamp capstone project. The application includes separate supervisor, inbound, and outbound dashboards, transaction accountability tracking, and account security features.</p>
-      <p>The solution is containerized and deployed across both Microsoft Azure and a self-hosted Kubernetes environment. GitHub Actions is used for CI/CD, Azure Container Registry stores container images, and Azure PostgreSQL serves as the shared database platform.</p>
-      <p>To deepen my understanding of cloud-native technologies, I also deployed the application to a 3-node K3s cluster running within my Proxmox home lab, allowing me to gain hands-on experience with container orchestration, deployment automation, and hybrid hosting architectures.</p>
-      <p>Contributors: Repo owner</p>
-      <pre><code>class Transaction(db.Model):
+    return redirect(url_for("community_board"))
+</code></pre>
+
+    https://github.com/mdrznbm/mini_project_b
+      Source Code
+    </a>
+
+    <a href="https://mdrznbm.pythonanywhere.com" target="_blank">
+      Live Demo
+    </a>
+  </div>
+
+  <div class="project-card">
+    <h3>Inventory Management App</h3>
+
+    <img src="assets/inventory-app-screenshot.png" alt="Inventory app login screenshot">
+    <img src="assets/supervisor-console.png" alt="Inventory app supervisor console">
+    <img src="assets/inbound-console.png" alt="Inventory app inbound console">
+    <img src="assets/outbound-console.png" alt="Inventory app outbound console">
+    <img src="assets/architecture.png" alt="Warehouse Inventory Management Architecture">
+
+    <p>
+      A role-based warehouse inventory management system developed as my
+      bootcamp capstone project. The application includes separate
+      supervisor, inbound, and outbound dashboards, transaction
+      accountability tracking, and account security features.
+    </p>
+
+    <p>
+      The solution is containerized and deployed across both Microsoft Azure
+      and a self-hosted Kubernetes environment. GitHub Actions is used for
+      CI/CD, Azure Container Registry stores container images, and Azure
+      PostgreSQL serves as the shared database platform.
+    </p>
+
+    <p>
+      To deepen my understanding of cloud-native technologies, I also
+      deployed the application to a 3-node K3s cluster running within my
+      Proxmox home lab, allowing me to gain hands-on experience with
+      container orchestration, deployment automation, and hybrid hosting
+      architectures.
+    </p>
+
+    <p>
+      Contributors: Repo owner
+    </p>
+
+    <pre><code>class Transaction(db.Model):
     __tablename__ = 'transactions'
+
     id = db.Column(db.Integer, primary_key=True)
     txn_type = db.Column(db.String(10), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    status = db.Column(db.String(10), default='PENDING', nullable=False)
-    actioned_by_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
-    actioned_by = db.relationship('User', foreign_keys=[actioned_by_user_id])</code></pre>
-      <a href="https://github.com/mdrznbm/inventory-app" target="_blank">Source Code</a>
-    </div>
+    status = db.Column(db.String(10),
+                       default='PENDING',
+                       nullable=False)
+</code></pre>
 
-  </section>
+    <a href="https://github.com/mdrznbm/inventory-app" target="_blank">
+      Source Code
+    </a>
+  </div>
+
+  <div class="project-card">
+    <h3>Home Lab & Platform Engineering</h3>
+
+    assets/homelab-platform-architecture.svg
+
+    <p>
+      Self-hosted platform engineering environment built on Proxmox VE
+      to develop practical experience with Infrastructure as Code,
+      Kubernetes operations, GitOps workflows, monitoring and
+      cloud-native technologies.
+    </p>
+
+    <p>
+      The environment includes a Terraform management node (VM100),
+      a dedicated K3s cluster comprising VM101, VM102 and VM103,
+      hosting ArgoCD, Prometheus, Grafana, Loki and Nextcloud.
+    </p>
+
+    <p>
+      The platform supports experimentation with Infrastructure as Code,
+      GitOps, observability, Kubernetes administration and self-hosted
+      services, while complementing application deployments across both
+      Azure and self-hosted environments.
+    </p>
+
+    <p>
+      Technologies: Proxmox VE, Terraform, Linux, K3s Kubernetes,
+      ArgoCD, Prometheus, Grafana, Loki, Nextcloud
+    </p>
+
+    <p>
+      Contributors: Sole administrator
+    </p>
+  </div>
+
+</section>
 
   <script>
     function applyTheme(theme) {
